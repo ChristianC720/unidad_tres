@@ -1,7 +1,6 @@
 <?php
 echo "error al insertar a la base de datos";
-$errores[]=$_GET['error'];
-
-foreach ($errores as $error) {
-    echo $error."<br>";
+$result = unserialize($_POST['result']);
+foreach ($result as $key => $value) {
+    echo $key.": ".$value."<br>";
 }

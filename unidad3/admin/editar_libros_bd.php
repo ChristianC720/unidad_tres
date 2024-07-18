@@ -11,11 +11,57 @@
     <div class="back1">
 <a href="../index.php"> Regresar</a>
 <form method="POST" name="RegistrarLibro" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+    <?php
+    if($_POST){
+        $errores = [];
+        $isbn=$_POST['isbn'];
+        $name=$_POST['name'];
+        $author=$_POST['autor'];
+        $price=$_POST['precio'];
+        $publisher=$_POST['editorial'];
+        $image=$_POST['imagen'];
+
+        if ($isbn === '') {
+            $errores[] = 'ISBN';
+        }
+        if ($name === '') {
+            $errores[] = 'Nombre';
+        }
+        if ($author === '') {
+            $errores[] = 'Autor';
+        }
+        if ($price === '') {
+            $errores[] = 'Precio';
+        }
+        if ($publisher === '') {
+            $errores[] = 'Editorial';
+        }
+        if ($image === '') {
+            $errores[] = 'Imagen';
+        }
+
+        if (!empty($errores)) {
+            require_once "../config/config.php";
+            mysqli_set_charset($link,"utf8");
+
+            $sql= "SELECT * FROM libros where isbn='$isbn'";
+            $resultado = mysqli_query($link, $sql);
+
+        }
+        else{
+            header("Location: errores/mensaje_error.php");
+            ?>
+            <!--<form action = "errores/mensaje_error.php" method = "POST">
+    <input type="hidden" name="result" value="<?php # htmlspecialchars(serialize($errores)); ?>">
+    <button type = "submit" name = "btError" > asdasd</button>-->
+        <?php } ?>
+
+
 
     <table>
         <tr>
         <th><label for="isbn">ISBN</label></th>
-        <td><input type="text" name="isbn" placeholder="Ingrese el isbn"></td>
+        <td><input type="text" name="isbn" placeholder="Ingrese el isbn" value="<?php echo $_GET['isbn'] ?>"></td>
         </tr>
         <tr>
         <th><label for="name">NOMBRE:</label></th>
@@ -41,50 +87,8 @@
 
     <input type="submit" hidden>
 </form>
+        <?php } ?>
     </div>
 </div>
-
-<?php
-if($_POST){
-    $errores = [];
-    $isbn=$_POST['isbn'];
-    $name=$_POST['name'];
-    $author=$_POST['autor'];
-    $price=$_POST['precio'];
-    $publisher=$_POST['editorial'];
-    $image=$_POST['imagen'];
-
-    if ($isbn === '') {
-        $errores[] = 'ISBN';
-    }
-    if ($name === '') {
-        $errores[] = 'Nombre';
-    }
-    if ($author === '') {
-        $errores[] = 'Autor';
-    }
-    if ($price === '') {
-        $errores[] = 'Precio';
-    }
-    if ($publisher === '') {
-        $errores[] = 'Editorial';
-    }
-    if ($image === '') {
-        $errores[] = 'Imagen';
-    }
-
-if (empty($errores)) {
-    require_once "../config/config.php";
-    mysqli_set_charset($link,"utf8");
-
-    $sql= "INSERT INTO libros (isbn, nombre, autor, precio, editorial, imagen)
-        VALUES ('$isbn', '$name', '$author', '$price', '$publisher', '$image')";
-    $resultado = mysqli_query($link, $sql);
-}
-else{
-    header("Location: errores/mensaje_error.php?error=$errores");
-    }
-}
-?>
 </body>
 </html>

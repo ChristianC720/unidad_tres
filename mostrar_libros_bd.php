@@ -1,31 +1,14 @@
 <?php 
+require_once "unidad3/config/config.php";
 
-
-$server = "localhost";
-$user = "root";
-$password = "";
-$database = "sm32";
-include ("consulta.css");
-$conexion = mysqli_connect('localhost','root','','sm32');
-if ($conexion->connect_errno){
+if ($link->connect_errno){
   die("conexion fallida" .  $conexion->connect_errno);
 }else{
     //echo "se ha conectado ala base de datos sm32";
-    echo ("<br>");
-}
-
-
-
-
-    
-  
-  
+    //echo ("<br>");
 
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,8 +26,6 @@ if ($conexion->connect_errno){
   }
 </style>
 
-
-
 <?php
 if(isset($_POST['EnViar'])){
 
@@ -56,16 +37,14 @@ if(isset($_POST['EnViar'])){
   $imagen=$_POST ['imagen'];
   $Editar=$_POST ['Editar'];
 
-
 }
 
-
 $consulta = "SELECT * FROM `libros`;";
-  $result=mysqli_query($conexion,$consulta);
+  $result=mysqli_query($link,$consulta);
 if($result)
 {
-echo "se ha podido realizar la consulta";
-echo("<br>");
+//echo "se ha podido realizar la consulta";
+//echo("<br>");
 }
 echo "<table>";
 echo "<tr>";
@@ -77,7 +56,6 @@ echo "<th><h1>editorial</th></h1>";
 echo ("<br>");
 echo "<th><h1>imagen</th></h1>";
 echo "<th><h1>Editar</th></h1>";
-
 echo "</tr>";
 
 ?>
@@ -92,41 +70,18 @@ echo "</tr>";
 </body>
 </body>
 <style></style>
-
-
-
-
-
-
 <?php
-while($colum = mysqli_fetch_array($result))
-{
-    echo "<tr>";
-
-    echo "<td/><h2>". $colum['isbn']. "</td></h2>";
-    
-    echo "<td/><h2>" . $colum['nombre']. "</td></h2>";
-
-    echo "<td/><h2>" . $colum['autor']. "</td></h2>";
-
-    echo "<td/><h2>" . $colum['precio']. "</td></h2>";
-
-    echo "<td/><h2>" . $colum['editorial']. "</td></h2>";
-
-    echo "<td/><h2>" . $colum['imagen']. "</td></h2>";
-
-    echo "<td/><h2><a href='http://localhost/admin/editor.php'>Editar</a>" . $colum['isbn']. "</td></h2>";
-    
-    echo "</tr>";
-    
-    
-   
+while($column = mysqli_fetch_array($result)){
+  $iesebeene = $column['isbn'];
+  echo "<tr>";
+  echo "<td/><h2>". $column['isbn']. "</td></h2>";
+  echo "<td/><h2>" . $column['nombre']. "</td></h2>";
+  echo "<td/><h2>" . $column['autor']. "</td></h2>";
+  echo "<td/><h2>" . $column['precio']. "</td></h2>";
+  echo "<td/><h2>" . $column['editorial']. "</td></h2>";
+  echo "<td/><h2>" . 'asdasd'. "</td></h2>";
+  echo "<td/><h2> <a href='unidad3/admin/editar_libros_bd.php?isbn=$iesebeene'>Editar</a> " . $column['isbn'] . "</td></h2>";
+  echo "</tr>";
 }
 echo "</table>";
-?>
-
-
- <?php echo '<a href=/admin/index.php/>regresar</a>'; ?>
-
- 
-
+?> <?php echo '<a href=/admin/index.php/>regresar</a>'; } ?>

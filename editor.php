@@ -1,56 +1,18 @@
 <?php
 $Editar= [];
 if($_SERVER = ['REQUEST_METHOD'] === 'POST') {
-$isbn = $_POST['isbn'];
-$nombre= $_POST['nombre'];
-$autor= $_POST['autor'];
-$precio= $_POST['precio'];
-$editorial= $_POST['editorial'];
-$imagen= $_POST['imagen'];
-
-
-
-
-
-
-
-
-
-
-
-
-
+$errores = [];
+$isbn=$_POST['isbn'];
+$name=$_POST['name'];
+$author=$_POST['autor'];
+$price=$_POST['precio'];
+$publisher=$_POST['editorial'];
+$image=$_POST['imagen'];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-$server = "localhost";
-$user = "root";
-$password = "";
-$database = "sm32";
-
-$conexion = mysqli_connect('localhost','root','','sm32');
-
-
-
-
-
-
-
-
+require_once "unidad3/config/config.php";
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

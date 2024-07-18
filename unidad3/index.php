@@ -13,6 +13,8 @@
         <a href="admin/registrar_libros_bd.php">Registrar Libros</a><br>
         <a href="admin/editar_libros_bd.php">Editar Libros</a><br>
         <a href="admin/mostrar_libros_bd.php">Consultar Libros</a>
+        <br><br>
+        <a href="../mostrar_libros_bd.php">Mostar Tabla Libros</a><br>
     </div>
 </div>
 </body>

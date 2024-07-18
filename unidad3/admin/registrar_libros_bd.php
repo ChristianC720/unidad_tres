@@ -80,9 +80,11 @@ if (empty($errores)) {
     $sql= "INSERT INTO libros (isbn, nombre, autor, precio, editorial, imagen)
         VALUES ('$isbn', '$name', '$author', '$price', '$publisher', '$image')";
     $resultado = mysqli_query($link, $sql);
-}else{
-    echo '<script>alert("Se necesita especificar: '; foreach ($errores as $error){ echo $error . ', '; } echo '")</script>';
-    }
+}            $resultado = mysqli_query($link, $sql);
+
+}
+else{
+header("Location: errores/mensaje_error.php");
 }
 ?>
 </body>
