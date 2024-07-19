@@ -11,10 +11,8 @@
 <div class="p1">
     <div class="back1">
         <a href="admin/registrar_libros_bd.php">Registrar Libros</a><br>
-        <a href="admin/editar_libros_bd.php">Editar Libros</a><br>
-        <a href="admin/mostrar_libros_bd.php">Consultar Libros</a>
-        <br><br>
-        <a href="../mostrar_libros_bd.php">Mostar Tabla Libros</a><br>
+        <a href="admin/mostrar_libreria_bd.php">Mostrar Tabla Libros</a><br>
+        <a href="admin/mostrar_libros_bd.php">Consultar Libro por ISBN</a><br>
     </div>
 </div>
 </body>

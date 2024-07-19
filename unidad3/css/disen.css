@@ -9,12 +9,12 @@ body {
 
 .back1{
     height: 100vh;
-    padding: 5% 15%;
+    padding: 5% ;
     background-color: gray;
     background-position: center;
     background-repeat: repeat;
     background-origin: padding-box;
-    margin: 0px 25%;
+    margin: 0px 20%;
 }
 
 .p1 {

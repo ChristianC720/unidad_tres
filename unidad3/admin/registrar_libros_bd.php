@@ -7,43 +7,43 @@
     <link rel="stylesheet" href="../css/disen.css">
 </head>
 <body>
-<div class="p1">
-    <div class="back1">
-<a href="../index.php"> Regresar</a>
-<form method="POST" name="RegistrarLibro" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+    <div class="p1">
+        <div class="back1">
+            <a href="../index.php"> Regresar</a>
 
-    <table>
-        <tr>
-        <th><label for="isbn">ISBN</label></th>
-        <td><input type="text" name="isbn" placeholder="Ingrese el isbn"></td>
-        </tr>
-        <tr>
-        <th><label for="name">NOMBRE:</label></th>
-        <td><input type="text" name="name" placeholder="Ingrese el nombre"></td>
-        </tr>
-        <tr>
-        <th><label for="autor">AUTOR:</label></th>
-        <td><input type="text" name="autor" placeholder="Ingrese el autor"></td>
-        </tr>
-        <tr>
-        <th><label for="precio">PRECIO:</label></th>
-        <td><input type="number" name="precio" placeholder="Ingrese el precio" step="0.01"></td>
-        </tr>
-        <tr>
-        <th><label for="editorial">EDITORIAL:</label></th>
-        <td><input type="text" name="editorial" placeholder="Ingrese la editorial"></td>
-        </tr>
-        <tr>
-        <th><label for="imagen">IMAGEN:</label></th>
-        <td><input type="text" name="imagen" placeholder="Ingrese el url de imagen"></td>
-        </tr>
-    </table>
-
-    <input type="submit" hidden>
-</form>
+            <form method="POST" name="RegistrarLibro" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                <table>
+                    <tr>
+                        <th><label for="isbn">ISBN</label></th>
+                        <td><input type="text" name="isbn" placeholder="Ingrese el isbn"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="name">NOMBRE:</label></th>
+                        <td><input type="text" name="name" placeholder="Ingrese el nombre"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="autor">AUTOR:</label></th>
+                        <td><input type="text" name="autor" placeholder="Ingrese el autor"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="precio">PRECIO:</label></th>
+                        <td><input type="number" name="precio" placeholder="Ingrese el precio" step="0.01"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="editorial">EDITORIAL:</label></th>
+                        <td><input type="text" name="editorial" placeholder="Ingrese la editorial"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="imagen">IMAGEN:</label></th>
+                        <td><input type="text" name="imagen" placeholder="Ingrese el url de imagen"></td>
+                    </tr>
+                </table>
+                <input type="submit" hidden>
+            </form>
+        </div>
     </div>
-</div>
-
+</body>
+</html>
 <?php
 if($_POST){
     $errores = [];
@@ -73,19 +73,18 @@ if($_POST){
         $errores[] = 'Imagen';
     }
 
-if (empty($errores)) {
-    require_once "../config/config.php";
-    mysqli_set_charset($link,"utf8");
+    if (empty($errores)) {
+        require_once "../config/config.php";
+        mysqli_set_charset($link,"utf8");
 
-    $sql= "INSERT INTO libros (isbn, nombre, autor, precio, editorial, imagen)
+        $sql= "INSERT INTO libros (isbn, nombre, autor, precio, editorial, imagen)
         VALUES ('$isbn', '$name', '$author', '$price', '$publisher', '$image')";
-    $resultado = mysqli_query($link, $sql);
-}            $resultado = mysqli_query($link, $sql);
+        $resultado = mysqli_query($link, $sql);
 
-}
-else{
-header("Location: errores/mensaje_error.php");
+        header("Location: ../index.php");
+    }
+    else{
+        header("Location: errores/mensaje_error.php");
+    }
 }
 ?>
-</body>
-</html>
