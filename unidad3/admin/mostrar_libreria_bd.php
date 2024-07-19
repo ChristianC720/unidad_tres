@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/disen.css">
 <body>
+
 <?php
 require_once "../config/config.php";
 
@@ -18,29 +19,31 @@ $consulta = "SELECT * FROM `libros`;";
   $result=mysqli_query($link,$consulta);
 if(!$result){
     echo "No se ha podido realizar la consulta";
-} else {
-    echo "<div class='p1'><div class='back1'>";
-    echo "<table border='1' cellpadding='10' cellspacing='0'>";
-    echo "<tr>";
-    echo "<th><h2>ISBN</th></h2>";
-    echo "<th><h2>Nombre</th></h2>";
-    echo "<th><h2>Autor</th></h2>";
-    echo "<th><h2>Precio</th></h2>";
-    echo "<th><h2>Editorial</th></h2>";
-    echo ("<br>");
-    echo "<th><h2>Imagen</th></h2>";
-    echo "<th><h2>Editar</th></h2>";
-    echo "<th><h2>Eliminar</th></h2>";
-    echo "</tr>";
+} else ?>
+    <div class='p1'><div class='back1'>
+    <table border='1' cellpadding='10' cellspacing='0'>
+    <a href=../index.php>regresar</a>
+    <tr>
+    <th><h3>ISBN</th></h3>
+    <th><h3>Nombre</th></h3>
+    <th><h3>Autor</th></h3>
+    <th><h3>Precio</th></h3>
+    <th><h3>Editorial</th></h3>
 
-    while($column = mysqli_fetch_array($result)){
-        echo "<tr>";
-            echo "<td/>". $column['isbn']. "   </td>";
-            echo "<td/>" . $column['nombre']. "</td>";
-            echo "<td/>" . $column['autor']. "</td>";
-            echo "<td/>" . $column['precio']. "</td>";
-            echo "<td/>" . $column['editorial']. "</td>";
-            echo "<td/>" . 'asdasd'. "</td>"; ?>
+    <th><h3>Imagen</th></h3>
+    <th><h3>Editar</th></h3>
+    <th><h3>Eliminar</th></h3>
+    </tr>
+
+    <?php while($column = mysqli_fetch_array($result)){ ?>
+            <tr>
+            <td/> <?php echo $column['isbn']; ?>  </td>
+            <td/> <?php echo $column['nombre']; ?>  </td>
+            <td/> <?php echo $column['autor']; ?>  </td>
+            <td/> <?php echo $column['precio']; ?>  </td>
+            <td/> <?php echo $column['editorial']; ?>  </td>
+            <td><image src=" <?php echo $column['imagen']; ?> " width='100px'></td>
+
 
             <td/> <form action="editar_libros_bd.php" method="POST">
                 <input name="isbn" value="<?php echo $column['isbn']; ?>" hidden>
@@ -57,8 +60,7 @@ if(!$result){
         </tr> <?php
     }
     echo "</table>";
-    echo '<a href=../index.php>regresar</a>';
-    }
+
 }
 
 if ($_POST) {

@@ -1,5 +1,6 @@
 body {
-    background: url(https://wallpaperwaifu.com/wp-content/uploads/2022/01/cyberpunk-2077-night-city-thumb.jpg);
+
+    background-color: lightgray;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -9,12 +10,12 @@ body {
 
 .back1{
     height: 100vh;
-    padding: 5% ;
-    background-color: gray;
+    padding: 1% ;
+    background-color: lightgray;
     background-position: center;
     background-repeat: repeat;
     background-origin: padding-box;
-    margin: 0px 20%;
+    margin: 0px 10%;
 }
 
 .p1 {
@@ -24,17 +25,17 @@ body {
 }
 
 a:link {
-    color: white;
+    color: #ff0000;
     background-color: transparent;
     text-decoration: none;
 }
 a:visited {
-    color: wheat;
+    color: #675237;
     background-color: transparent;
     text-decoration: none;
 }
 a:hover {
-    color: yellow;
+    color: grey;
     background-color: transparent;
     text-decoration: underline;
 }
